@@ -1,5 +1,5 @@
 import React from 'react';
-import {Title_Label,Label} from '../../components';
+import {Title_Label,Label,Button} from '../../components';
 import {Main} from './styles';
 
 const Task = ({urgencia = 'Baixa'}) => {
@@ -16,7 +16,7 @@ const Task = ({urgencia = 'Baixa'}) => {
             <Title_Label>Titulo da Tarefa</Title_Label>
             <Label>00/00/0000</Label>
             <Label>Linha que descreve a tarefa</Label>
-            <Label>00:00</Label>
+            <Button>Remover Nota</Button>
         </Main>
     )
 }

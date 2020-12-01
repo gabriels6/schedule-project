@@ -1,12 +1,13 @@
 import './App.css';
-import {Home} from './containers';
+import {Home,Footer,Login} from './containers';
 import {ThemeProvider} from 'styled-components';
 import theme from './theme';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-        <Home />
+        <Login />
+        <Footer/>
     </ThemeProvider>
   );
 }

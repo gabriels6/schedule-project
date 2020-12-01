@@ -6,6 +6,7 @@ export const Main = styled.input`
 
     ${(props) => props.type === 'date' && 'width:150px;'}
     ${(props) => props.type === 'text' && 'width:304px'};
+    ${(props) => props.type === 'password' && 'width:304px'};
 
     
     font-family:'${(props) => props.theme.fonts.regular}';

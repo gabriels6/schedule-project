@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Main = styled.button`
-    margin: 25px 15px;
+    margin-left: 15px;
     padding: 5px 10px;
 
     border:solid 3px ${(props) => props.theme.colors.secondary};
