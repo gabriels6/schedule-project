@@ -1,8 +1,8 @@
-export function saveUser({Username}){
+export function saveUser(Username){
     return{
         type:'SAVE_USER',
         payload: {
-            Username
+            Username:Username
         }
     }
 }

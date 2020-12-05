@@ -1,10 +1,10 @@
 import React from 'react';
 import {Main} from './styles';
 
-const Input  = ({placeholder,type = 'text'}) => {
+const Input  = ({placeholder,type = 'text',onKeyUp,onChange}) => {
 
     return(
-        <Main type = {type} placeholder = {placeholder}/>
+        <Main onChange = {onChange} onKeyUp = {onKeyUp} type = {type} placeholder = {placeholder}/>
     )
 }
 

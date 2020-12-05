@@ -1,13 +1,13 @@
 const initialState = {
     user: {
-        Username
+        Username:''
     }
 }
 
 export default function reducer(state = initialState,action){
     switch( action.type ){
         case 'SAVE_USER':
-            return{...state,user:{Username:action.payload}};
+            return{...state,user:{Username:action.payload.Username}};
 
         default:
             return state;

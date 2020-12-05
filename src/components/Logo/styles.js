@@ -5,4 +5,5 @@ export const Main = styled.div`
     font-size:${(props) => props.theme.font_sizes.logo};
     border: solid 15px black;
     padding: 15px 45px;
+    margin-bottom:20px;
 `;

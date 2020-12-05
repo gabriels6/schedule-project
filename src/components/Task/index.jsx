@@ -1,10 +1,21 @@
 import React from 'react';
 import {Title_Label,Label,Button} from '../../components';
 import {Main} from './styles';
+import axios from 'axios';
 
-const Task = ({urgencia = 'Baixa'}) => {
+const Task = ({urgencia = 'Baixa',Title="Titulo",Content="Conteudo",Date="00/00/0000",NoteId,getNotes,setLogged}) => {
     
     let color = '';
+
+    async function  removeNote(){
+        let connection = axios.create();
+
+        let response = await connection.delete("http://localhost:3333/Note?_id="+NoteId);
+
+        console.log(response);
+        setLogged(false);
+        getNotes();
+    }
 
     if(urgencia === 'Imediata') color = '#6036A5';
     if(urgencia === 'Alta') color = '#FF5151';
@@ -13,10 +24,10 @@ const Task = ({urgencia = 'Baixa'}) => {
 
     return(
         <Main color = {color}>
-            <Title_Label>Titulo da Tarefa</Title_Label>
-            <Label>00/00/0000</Label>
-            <Label>Linha que descreve a tarefa</Label>
-            <Button>Remover Nota</Button>
+            <Title_Label>{Title}</Title_Label>
+            <Label>{Date}</Label>
+            <Label>{Content}</Label>
+            <Button onClick={removeNote}>Remover Nota</Button>
         </Main>
     )
 }
