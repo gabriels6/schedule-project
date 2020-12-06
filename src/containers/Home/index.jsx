@@ -19,7 +19,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
         
 
         let {data} = await connection.get(
-            "http://localhost:3333/Notes?id="+UserId
+            "http://localhost:3333/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
         )
 
         setLogged(true);
