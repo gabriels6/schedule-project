@@ -3,10 +3,12 @@ import {Logo,Info_Card,Title_Label,Input,Button,Control_Section} from '../../com
 import {Main} from './styles';
 import {saveUser} from '../../store/actions/user';
 import {connect} from 'react-redux';
-import { Redirect } from 'react-router-dom'; 
+import { Redirect,useHistory } from 'react-router-dom'; 
 import axios from 'axios';
 
 const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
+
+    const history = useHistory();
 
     let Username = '';
     let Pass = '';
@@ -41,6 +43,12 @@ const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
     
     }
 
+    
+
+    const SignUp = () => {
+        history.push("/SignUp");
+    }
+
     return(
         UserId !== '' && typeof UserId !== undefined?
             <Redirect to = "Schedule"/>
@@ -51,7 +59,8 @@ const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
                         <Title_Label>Autenticar usuário</Title_Label>
                         <Input onKeyUp={handleChangeUser} placeholder={'Nome de Usuário...'}/>
                         <Input onKeyUp={handleChangePass} type = "password" placeholder={'Senha...'}/>
-                        <Button onClick={handleLogin}>Adicionar Tarefa</Button>
+                        <Button onClick={handleLogin}>LOG IN</Button>
+                        <Button onClick={SignUp}>SIGN UP</Button>
                 </Info_Card> 
             </Main> 
     )

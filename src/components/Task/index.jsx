@@ -10,7 +10,7 @@ const Task = ({urgencia = 'Baixa',Title="Titulo",Content="Conteudo",Date="00/00/
     async function  removeNote(){
         let connection = axios.create();
 
-        let response = await connection.delete("http://localhost:3333/Note?_id="+NoteId);
+        let response = await connection.delete("http://localhost:3333/Note?_id="+NoteId+"&TOKEN="+process.env.REACT_APP_TOKEN);
 
         console.log(response);
         setLogged(false);
