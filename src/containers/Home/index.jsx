@@ -19,7 +19,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
         
 
         let {data} = await connection.get(
-            "http://localhost:3333/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
+            "https://schedule-control-api.herokuapp.com/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
         )
 
         setLogged(true);
@@ -41,8 +41,8 @@ const Home = ({children,UserId,Notes,setNotes}) => {
         };
 
         let result = await connection.post(
-            "http://localhost:3333/Notes",
-            body
+            "https://schedule-control-api.herokuapp.com/Notes",
+             body
         )
 
         console.log(result);

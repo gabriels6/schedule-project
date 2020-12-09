@@ -28,18 +28,31 @@ const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
     async function handleLogin(){
         let connection = axios.create();
 
+        if(Username === '' || Username === ' '){
+            alert("Preencha todos os campos");
+            return;
+        }
+        if(Pass === '' || Pass === ' '){
+            alert("Preencha todos os campos");
+            return;
+        }
+
         let body = {
             Username:Username,
             Password:Pass
         }
 
         let User = await connection.post(
-            "http://localhost:3333/User",
+            "https://schedule-control-api.herokuapp.com/User",
             body
         );
 
-        setUserId(User.data._id);
+        if(typeof User.data._id != 'undefined') setUserId(User.data._id);
+        else alert(User.data.Error)
+        
 
+
+        
     
     }
 
