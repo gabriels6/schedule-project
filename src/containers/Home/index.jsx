@@ -47,6 +47,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
 
         console.log(result);
 
+        setLogged(false);
         getNotes();
 
     }
