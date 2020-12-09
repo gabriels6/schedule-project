@@ -47,6 +47,8 @@ const Home = ({children,UserId,Notes,setNotes}) => {
 
         console.log(result);
 
+        getNotes();
+
     }
 
     const handleDate = (e) =>{
