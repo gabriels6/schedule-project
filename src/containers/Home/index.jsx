@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {Main} from './styles';
 import {Logo,Input,Button,Control_Section,Select,Task_Card,Title_Label,Schedule_Subtitle,Info_Card,Task} from '../../components';
 import axios from 'axios';
-import {SwitchDate} from '../../common/utils';
+import {CreateDate,SwitchDate} from '../../common/utils';
 
 const Home = ({children,UserId,Notes,setNotes}) => {
 
@@ -53,7 +53,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
     }
 
     const handleDate = (e) =>{
-        Date = SwitchDate(e.target.value);
+        Date = CreateDate(e.target.value);
         //console.log(Date);
     }
 
@@ -107,7 +107,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
                     Notes.length !== 0?
                         Notes.map((Note,index) => {
                             return(
-                                <Task key = {index}  getNotes = {getNotes} setLogged = {setLogged} NoteId = {Note._id} urgencia = {Note.Urgency} Title={Note.Title} Date={Note.Date} Content={Note.Content} />
+                                <Task key = {index}  getNotes = {getNotes} setLogged = {setLogged} NoteId = {Note._id} urgencia = {Note.Urgency} Title={Note.Title} Date={SwitchDate(Note.Date)} Content={Note.Content} />
                             )
                         })
                         :
