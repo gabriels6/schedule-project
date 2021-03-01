@@ -45,11 +45,20 @@ const Home = ({children,UserId,Notes,setNotes}) => {
              body
         )
 
-        console.log(result);
-
+        
+        clearFields();
         setLogged(false);
         getNotes();
 
+    }
+
+    console.log(document.getElementById('Select'));
+
+    const clearFields = () =>{
+        document.getElementById('InputTitle').value = "";
+        document.getElementById('InputDesc').value = "";
+        document.getElementById('Select').value = "Invalid";
+        document.getElementById('InputDate').value = 0;
     }
 
     const handleDate = (e) =>{
@@ -78,9 +87,9 @@ const Home = ({children,UserId,Notes,setNotes}) => {
             <Control_Section>
                 <Task_Card>
                     <Title_Label>Adicionar Tarefa</Title_Label>
-                    <Input onKeyUp = {handleTitle} placeholder={'Titulo...'}/>
-                    <Input onKeyUp = {handleContent} placeholder={'Descrição...'}/>
-                    <Select onChange = {handleUrgency}>
+                    <Input id = 'InputTitle' onKeyUp = {handleTitle} placeholder={'Titulo...'}/>
+                    <Input id = {'InputDesc'} onKeyUp = {handleContent} placeholder={'Descrição...'}/>
+                    <Select id = {'Select'} onChange = {handleUrgency}>
                         <option value = "Invalid">Selecione uma das opções</option>
                         <option value = "Baixa">Baixa urgência</option>
                         <option value = "Media">Media urgência</option>
@@ -88,7 +97,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
                         <option value = "Imediata">Imediato</option>
                     </Select>
                     <p></p>
-                    <Input onChange={handleDate} type={'date'}/>
+                    <Input id = {'InputDate'} onChange={handleDate} type={'date'}/>
                     <Button onClick = {() => {
                         addNote();
                         setLogged(false);
