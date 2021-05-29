@@ -8,4 +8,5 @@ export const Main = styled.div`
     max-width:60%;
     line-height:20px;
     margin-bottom:10px;
+    margin-top:10px;
 `;
