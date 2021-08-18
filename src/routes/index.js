@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import {Login,Home,SignUp} from '../containers';
+import {Login,Home,SignUp,DailyReview} from '../containers';
+import {Navbar} from '../components';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 const SwitchControl = () => {
@@ -14,7 +15,12 @@ const SwitchControl = () => {
                 <Login UserId={UserId} setUserId={setUserId} Notes={Notes} setNotes={setNotes}></Login>
             </Route>
             <Route path = "/Schedule">
+                <Navbar/>
                 <Home UserId={UserId} Notes={Notes} setNotes={setNotes}></Home>
+            </Route>
+            <Route path = "/DR">
+                <Navbar/>
+                <DailyReview/>
             </Route>
             <Route path = '/SignUp'>
                 <SignUp></SignUp>

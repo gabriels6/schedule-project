@@ -9,4 +9,6 @@ export { default as Schedule_Subtitle} from './Schedule_Subtitle';
 export { default as Task } from './Task';
 export { default as Label } from './Label';
 export { default as Select } from './Select';
+export { default as Navbar } from './Navbar';
+export { default as Card } from './Card';
  

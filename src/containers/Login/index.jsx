@@ -6,23 +6,23 @@ import {connect} from 'react-redux';
 import { Redirect,useHistory } from 'react-router-dom'; 
 import axios from 'axios';
 
-const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
+const Login = ({saveUser,UserId,setUserId,user,Notes,setNotes}) => {
 
     const history = useHistory();
 
-    let Username = '';
-    let Pass = '';
+    const [Username,setUsername] = useState('');
+    const [Pass,setPass] = useState('');
 
     const handleAddUser = () => {
         saveUser(Username);
     }
 
     const handleChangeUser = (e) => {
-        Username = e.target.value;
+        setUsername(e.target.value);
     }
 
     const handleChangePass = (e) => {
-        Pass = e.target.value;
+        setPass(e.target.value);
     }
 
     async function handleLogin(){
@@ -47,15 +47,14 @@ const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
             body
         );
 
-        if(typeof User.data._id != 'undefined') setUserId(User.data._id);
+        if(typeof User.data._id != 'undefined'){
+            setUserId(User.data._id);
+            saveUser(User.data.Username,User.data._id);
+        }
         else alert(User.data.Error)
-        
-
-
-        
-    
     }
 
+    
     
 
     const SignUp = () => {
@@ -63,15 +62,15 @@ const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
     }
 
     return(
-        UserId !== '' && typeof UserId !== undefined?
+        user != null && user.User_id ?
             <Redirect to = "Schedule"/>
         :
             <Main>
             <Logo/>
                 <Info_Card>
                         <Title_Label>Autenticar usuário</Title_Label>
-                        <Input onKeyUp={handleChangeUser} placeholder={'Nome de Usuário...'}/>
-                        <Input onKeyUp={handleChangePass} type = "password" placeholder={'Senha...'}/>
+                        <Input onChange={handleChangeUser} value={Username} placeholder={'Nome de Usuário...'}/>
+                        <Input onChange={handleChangePass} value={Pass} type = "password" placeholder={'Senha...'}/>
                         <Button onClick={handleLogin}>LOG IN</Button>
                         <Button onClick={SignUp}>SIGN UP</Button>
                 </Info_Card> 
@@ -80,7 +79,7 @@ const Login = ({saveUser,UserId,setUserId,Notes,setNotes}) => {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user
+    user: state.users.user
 })
 
 

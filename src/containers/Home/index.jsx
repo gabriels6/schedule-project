@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Main} from './styles';
-import {Logo,Input,Button,Control_Section,Select,Task_Card,Title_Label,Schedule_Subtitle,Info_Card,Task} from '../../components';
+import {Logo,Input,Button,Control_Section,Select,Task_Card,Title_Label,Schedule_Subtitle,Info_Card,Task,Card} from '../../components';
 import axios from 'axios';
 import {CreateDate,SwitchDate} from '../../common/utils';
 
@@ -52,8 +52,6 @@ const Home = ({children,UserId,Notes,setNotes}) => {
 
     }
 
-    console.log(document.getElementById('Select'));
-
     const clearFields = () =>{
         document.getElementById('InputTitle').value = "";
         document.getElementById('InputDesc').value = "";
@@ -83,12 +81,11 @@ const Home = ({children,UserId,Notes,setNotes}) => {
 
     return(
         <Main>
-            <Logo/>
             <Control_Section>
                 <Task_Card>
                     <Title_Label>Adicionar Tarefa</Title_Label>
-                    <Input id = 'InputTitle' onKeyUp = {handleTitle} placeholder={'Titulo...'}/>
-                    <Input id = {'InputDesc'} onKeyUp = {handleContent} placeholder={'Descrição...'}/>
+                    <Input id = 'InputTitle' onChange = {handleTitle} placeholder={'Titulo...'}/>
+                    <Input id = {'InputDesc'} onChange = {handleContent} placeholder={'Descrição...'}/>
                     <Select id = {'Select'} onChange = {handleUrgency}>
                         <option value = "Invalid">Selecione uma das opções</option>
                         <option value = "Baixa">Baixa urgência</option>
