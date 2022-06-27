@@ -16,14 +16,11 @@ const Home = ({children,UserId,Notes,setNotes}) => {
     async function getNotes() {
 
         if(UserId !== '' && logged === false){
-        
-
-        let {data} = await connection.get(
-            "https://schedule-control-api.herokuapp.com/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
-        )
-
-        setLogged(true);
-        setNotes(data);
+            let {data} = await connection.get(
+                "https://schedule-control-api.herokuapp.com/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
+            )
+            setLogged(true);
+            setNotes(data);
         } 
         
     }

@@ -27,6 +27,9 @@ const Navbar = ({user,saveUser}) => {
                     <NavLink to="/DR">Daily Reviews</NavLink>
                 </div>
                 <div>
+                    <NavLink to="/TaskLogs">Task Log</NavLink>
+                </div>
+                <div>
                     {"<" + user.Username + ">"}
                 </div>
                 <div>
