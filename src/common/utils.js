@@ -14,5 +14,11 @@ export function SwitchDate(Date){
     
         return Day+"/"+Month+"/"+Year;
 }
+export function FormatDateAndTime(DateString){
+        let DateTimeArr = DateString.split('T');
+        let Date = DateTimeArr[0];
+        let Time = DateTimeArr[1];
+        return Date?.split('-').reverse().join('/') + ' ' + Time?.split('-')[0];
+}
 
     

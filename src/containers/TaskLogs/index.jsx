@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card, Control_Section, Input, Task_Card, Title_Label } from "../../components";
-import { Main } from "./styles";
+import { LogSection, Main } from "./styles";
 import moment from "moment";
+import { FormatDateAndTime } from "../../common/utils";
 
 const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
 
@@ -73,11 +74,13 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
                 taskLogs.length !== 0?
                     taskLogs.map((Log, index) => (
                         <Card key={index}>
-                            <h1>{Log.Timestamp}</h1>
-                            <p>{Log.Description}</p>
-                            <Button onClick={deleteTaskLog} id={Log._id}>
-                                Delete
-                            </Button>
+                            <h1>{FormatDateAndTime(Log.Timestamp)}</h1>
+                            <LogSection>
+                                <p>{Log.Description}</p>
+                                <Button onClick={deleteTaskLog} id={Log._id}>
+                                    Delete
+                                </Button>
+                            </LogSection>
                         </Card>
                     )) : ''
             }

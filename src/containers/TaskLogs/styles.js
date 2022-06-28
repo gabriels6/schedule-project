@@ -9,3 +9,8 @@ export const Main = styled.div `
     align-items:center;
     justify-content:center;
 `;
+
+export const LogSection = styled.div `
+    display: flex;
+    justify-content: space-between;
+`;
