@@ -27,7 +27,7 @@ const SignUp = () => {
         }
 
         let User = await connection.post(
-            process.env.API_URL+"/User/Create",
+            process.env.REACT_APP_API_URL+"/User/Create",
             body
         );
 

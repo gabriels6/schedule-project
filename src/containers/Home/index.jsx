@@ -17,7 +17,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
 
         if(UserId !== '' && logged === false){
             let {data} = await connection.get(
-                process.env.API_URL+"/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
+                process.env.REACT_APP_API_URL+"/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
             )
             setLogged(true);
             setNotes(data);
@@ -38,7 +38,7 @@ const Home = ({children,UserId,Notes,setNotes}) => {
         };
 
         let result = await connection.post(
-            process.env.API_URL+"/Notes",
+            process.env.REACT_APP_API_URL+"/Notes",
              body
         )
 

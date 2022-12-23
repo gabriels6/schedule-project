@@ -43,7 +43,7 @@ const Login = ({saveUser,UserId,setUserId,user,Notes,setNotes}) => {
         }
 
         let User = await connection.post(
-            process.env.API_URL+"/User",
+            process.env.REACT_APP_API_URL+"/User",
             body
         );
 

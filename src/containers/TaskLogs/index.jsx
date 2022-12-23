@@ -24,7 +24,7 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
 
         if(UserId !== '' && logged === false){
             let {data} = await connection.get(
-                process.env.API_URL+"/TaskLogs?User_id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
+                process.env.REACT_APP_API_URL+"/TaskLogs?User_id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
             )
             setLogged(true);
             setTaskLogs(data);
@@ -41,7 +41,7 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
         
 
         let result = await connection.post(
-            process.env.API_URL+"/TaskLogs",
+            process.env.REACT_APP_API_URL+"/TaskLogs",
              body
         )
 
@@ -51,7 +51,7 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
 
     async function deleteTaskLog(event){
         let id = event.currentTarget.id
-        await connection.delete(process.env.API_URL+"/TaskLogs",{
+        await connection.delete(process.env.REACT_APP_API_URL+"/TaskLogs",{
             params: {
                 _id: id,
                 TOKEN: process.env.REACT_APP_TOKEN
