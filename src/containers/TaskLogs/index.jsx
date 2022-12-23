@@ -24,7 +24,7 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
 
         if(UserId !== '' && logged === false){
             let {data} = await connection.get(
-                "https://schedule-control-api.herokuapp.com/TaskLogs?User_id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
+                process.env.API_URL+"/TaskLogs?User_id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
             )
             setLogged(true);
             setTaskLogs(data);
@@ -41,7 +41,7 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
         
 
         let result = await connection.post(
-            "https://schedule-control-api.herokuapp.com/TaskLogs",
+            process.env.API_URL+"/TaskLogs",
              body
         )
 
@@ -51,7 +51,7 @@ const TaskLog = ({UserId, taskLogs = [], setTaskLogs}) => {
 
     async function deleteTaskLog(event){
         let id = event.currentTarget.id
-        await connection.delete("https://schedule-control-api.herokuapp.com/TaskLogs",{
+        await connection.delete(process.env.API_URL+"/TaskLogs",{
             params: {
                 _id: id,
                 TOKEN: process.env.REACT_APP_TOKEN

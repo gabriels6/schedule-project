@@ -27,7 +27,7 @@ const SignUp = () => {
         }
 
         let User = await connection.post(
-            "https://schedule-control-api.herokuapp.com/User/Create",
+            process.env.API_URL+"/User/Create",
             body
         );
 

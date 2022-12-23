@@ -20,7 +20,7 @@ const DailyReview = ({user,saveDailyReviews,DailyReviews}) => {
         
 
             let {data} = await connection.get(
-                "https://schedule-control-api.herokuapp.com/DR?id="+user.User_id+"&TOKEN="+process.env.REACT_APP_TOKEN
+                process.env.API_URL+"/DR?id="+user.User_id+"&TOKEN="+process.env.REACT_APP_TOKEN
             )
     
             saveDailyReviews(data);
@@ -51,7 +51,7 @@ const DailyReview = ({user,saveDailyReviews,DailyReviews}) => {
         };
 
         await connection.post(
-            "https://schedule-control-api.herokuapp.com/DR?TOKEN="+process.env.TOKEN,
+            process.env.API_URL+"/DR?TOKEN="+process.env.TOKEN,
              body
         );
 
