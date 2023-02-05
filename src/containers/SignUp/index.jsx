@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import {Main} from './styles';
 import {Logo,Task_Card,Title_Label,Input,Button,Control_Section} from '../../components';
 import axios from 'axios';
+import api from '../../utils/api';
 
 const SignUp = () => {
 
@@ -19,15 +20,13 @@ const SignUp = () => {
             return;
         }
 
-        let connection = await axios.create();
-
         let body = {
             Username:Username,
             Password:Pass
         }
 
-        let User = await connection.post(
-            process.env.REACT_APP_API_URL+"/User/Create",
+        let User = await api.post(
+            "/User/Create",
             body
         );
 

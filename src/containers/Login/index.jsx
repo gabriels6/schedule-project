@@ -4,7 +4,7 @@ import {Main} from './styles';
 import {saveUser} from '../../store/actions/user';
 import {connect} from 'react-redux';
 import { Redirect,useHistory } from 'react-router-dom'; 
-import axios from 'axios';
+import api from '../../utils/api';
 
 const Login = ({saveUser,UserId,setUserId,user,Notes,setNotes}) => {
 
@@ -26,7 +26,6 @@ const Login = ({saveUser,UserId,setUserId,user,Notes,setNotes}) => {
     }
 
     async function handleLogin(){
-        let connection = axios.create();
 
         if(Username === '' || Username === ' '){
             alert("Preencha todos os campos");
@@ -42,8 +41,8 @@ const Login = ({saveUser,UserId,setUserId,user,Notes,setNotes}) => {
             Password:Pass
         }
 
-        let User = await connection.post(
-            process.env.REACT_APP_API_URL+"/User",
+        let User = await api.post(
+            "/User",
             body
         );
 

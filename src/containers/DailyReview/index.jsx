@@ -6,10 +6,9 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {saveDailyReviews} from '../../store/actions/daily-reviews';
 import { CreateDate } from '../../common/utils';
+import api from '../../utils/api';
 
 const DailyReview = ({user,saveDailyReviews,DailyReviews}) => {
-
-    let connection = axios.create();
 
     let history = useHistory();
 
@@ -19,7 +18,7 @@ const DailyReview = ({user,saveDailyReviews,DailyReviews}) => {
         if(user.User_id !== ''){
         
 
-            let {data} = await connection.get(
+            let {data} = await api.get(
                 process.env.REACT_APP_API_URL+"/DR?id="+user.User_id+"&TOKEN="+process.env.REACT_APP_TOKEN
             )
     
@@ -50,9 +49,9 @@ const DailyReview = ({user,saveDailyReviews,DailyReviews}) => {
             Review:finalReview
         };
 
-        await connection.post(
-            process.env.REACT_APP_API_URL+"/DR?TOKEN="+process.env.TOKEN,
-             body
+        await api.post(
+            "/DR?TOKEN="+process.env.TOKEN,
+            body
         );
 
     }

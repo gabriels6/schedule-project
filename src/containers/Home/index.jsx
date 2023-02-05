@@ -3,6 +3,7 @@ import {Main} from './styles';
 import {Logo,Input,Button,Control_Section,Select,Task_Card,Title_Label,Schedule_Subtitle,Info_Card,Task,Card} from '../../components';
 import axios from 'axios';
 import {CreateDate,SwitchDate} from '../../common/utils';
+import api from '../../utils/api';
 
 const Home = ({children,UserId,Notes,setNotes}) => {
 
@@ -11,13 +12,12 @@ const Home = ({children,UserId,Notes,setNotes}) => {
     let Content = '';
     let Urgency = '';
     const [logged,setLogged] = useState(false);
-    let connection = axios.create();
 
     async function getNotes() {
 
         if(UserId !== '' && logged === false){
-            let {data} = await connection.get(
-                process.env.REACT_APP_API_URL+"/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
+            let {data} = await api.get(
+                "/Notes?id="+UserId+"&TOKEN="+process.env.REACT_APP_TOKEN
             )
             setLogged(true);
             setNotes(data);
@@ -37,9 +37,9 @@ const Home = ({children,UserId,Notes,setNotes}) => {
             Urgency:Urgency
         };
 
-        let result = await connection.post(
-            process.env.REACT_APP_API_URL+"/Notes",
-             body
+        let result = await api.post(
+            "/Notes",
+            body
         )
 
         
@@ -110,7 +110,18 @@ const Home = ({children,UserId,Notes,setNotes}) => {
                     Notes.length !== 0?
                         Notes.map((Note,index) => {
                             return(
-                                <Task key = {index}  getNotes = {getNotes} setLogged = {setLogged} NoteId = {Note._id} urgencia = {Note.Urgency} Title={Note.Title} Date={SwitchDate(Note.Date)} Content={Note.Content} />
+                                <Task 
+                                    key =           {index} 
+                                    getNotes =      {getNotes} 
+                                    setLogged =     {setLogged} 
+                                    NoteId =        {Note._id} 
+                                    urgencia =      {Note.Urgency} 
+                                    Title =         {Note.Title} 
+                                    Date =          {SwitchDate(Note.Date)} 
+                                    StartTaskTime = {Note.StartTaskTime} 
+                                    EndTaskTime =   {Note.EndTaskTime} 
+                                    Content =       {Note.Content} 
+                                />
                             )
                         })
                         :
